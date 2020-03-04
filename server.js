@@ -22,7 +22,7 @@ app.post('/api/messages', (req, res) => {
 
 // deleteMessage
 app.delete('/api/messages/:msg_id', (req, res) => {
-  pool.deleteMessage(req.body)
+  pool.deleteMessage(req.params.msg_id)
       .then(() => res.sendStatus(201));
 });
 
@@ -30,12 +30,13 @@ app.delete('/api/messages/:msg_id', (req, res) => {
 app.get('/api/messages', (req, res) => {
   pool.getAllMessages()
       .then(results => res.send(results));
-});
+    });
 
 // getMessage
-app.get('/api/messages/:msg_name', (req, res) => {
-  pool.getMessage(req.params.name)
+app.get('/api/messages/:msg_id', (req, res) => {
+  pool.getMessage(req.params.msg_id)
       .then(results => res.send(results));
+      console.log('gM: ', req.params, req.body)
 });
 
 // updateMessageMessage

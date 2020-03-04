@@ -15,7 +15,7 @@ const addMessage = (messages) => {
 // DELETE FROM table_name WHERE condition; ???
 const deleteMessage = (msg_id) => {
   let value = [msg_id]
-  return pool.query('DELETE FROM messages WHERE msg_id = VALUE ($1)', value)
+  return pool.query('DELETE FROM messages WHERE msg_id = $1', value)
       .then(() => true)
 };
 
